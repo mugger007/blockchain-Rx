@@ -83,7 +83,7 @@ contract Rx {
 
   uint drugCount; //for addDrug
 
-  uint prescriptionCount; //for newPrescription - TESTING
+  uint prescriptionCount; //for newPrescription
   uint dispenseCount; //for dispenseDrug
 
   constructor() {
@@ -424,5 +424,4 @@ contract Rx {
 
     return (_dispensedDate, _dispensedQuantity, _dispensedDuration, _dispensed);
   }
-
 }
