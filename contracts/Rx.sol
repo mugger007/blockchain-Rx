@@ -70,8 +70,6 @@ contract Rx {
   mapping(address => Prescriber) public prescriberStructs; //access by prescriber address
   address[] public prescriberList; //list of prescriber address so we can enumerate them
 
-
-
   mapping(address => Patient) public patientStructs; //access by patient address
   address[] patientList; //list of patient address so we can enumerate them
 
