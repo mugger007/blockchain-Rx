@@ -595,7 +595,7 @@ class Admin extends Component {
     if (this.state.view === 'pharmacists') {
       for (let i = 0; i < selected.length; i++) {
         let _index = this.state.pharmacists.findIndex(x => x.addr === selected[i]);
-        await this.props.contract.methods.updatePharmacist(this.state.pharmacists[_index].prn, this.state.pharmacists[_index].mcr, this.state.pharmacists[_index].clinicName, this.state.pharmacists[_index].clinicAddress, this.state.pharmacists[_index].addr).send({ from: this.props.account })
+        await this.props.contract.methods.updatePharmacist(this.state.pharmacists[_index].name, this.state.pharmacists[_index].prn, this.state.pharmacists[_index].clinicName, this.state.pharmacists[_index].clinicAddress, this.state.pharmacists[_index].addr).send({ from: this.props.account })
       };
     };
     await this.setState({ isEdit: false, selected: [] });

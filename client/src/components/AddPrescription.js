@@ -101,6 +101,7 @@ class AddPrescription extends Component {
 
   state = {
     prescriptionNumber: '',
+    prescriptionKey: '',
     prescriberName: '',
     prescriberAddr: '',
     patientData: {
@@ -141,6 +142,10 @@ class AddPrescription extends Component {
     let _prescriberAddr = await this.props.location.state.prescriberAddr;
     await this.setState({ prescriberAddr: _prescriberAddr });
 
+    let _prescriptionList = await this.props.contract.methods.getPrescriptionList().call();
+    let _prescriptionKey = _prescriptionList.length + 1;
+    await this.setState({ prescriptionKey: _prescriptionKey });
+    console.log(this.state.prescriptionKey);
   };
 
   //function to handle adding of new drug row
@@ -198,8 +203,8 @@ class AddPrescription extends Component {
       let dosing = rows[i].dosing;
       let duration = rows[i].duration;
       let quantity = rows[i].quantity;
-      console.log(rows[i].isNew);
-      await this.props.contract.methods.addDrug(this.state.prescriptionNumber, drugName, strength, dosing, duration, quantity).send({ from: this.props.account }); //push new drug in new prescription to blockchain
+      await this.props.contract.methods.addDrug(this.state.prescriptionKey, drugName, strength, dosing, duration, quantity).send({ from: this.props.account }); //push new drug in new prescription to blockchain
+      console.log('success')
     }
     history.push({ pathname: '/PatientList' });
     alert("New prescription created successfully");
